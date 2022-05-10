@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {ethers} from 'ethers'
 import '../styles/AuthPage.css'
 import {provider, signer} from '../util/metamask'
 import { useNavigate } from 'react-router-dom';
@@ -67,13 +66,13 @@ function AuthPage() {
     
     fetch(`http://localhost:5000/api/auth/get-user/${accounts[0]}`)
       .then((response) => response.json())
-      // If yes, retrieve it. If no, create it.
+      // //If user exists, retrieve it. If no, then signup and create user.
       .then((user) => user ? user : handleSignup(accounts[0]))
       // Popup MetaMask confirmation modal to sign message
       .then(handleSignMessage)
       // // Send signature to backend on the /auth route
       .then(handleAuthenticate)
-      // // Pass accessToken back to parent component (to save it in localStorage)
+      // //  save jwt token in localStorage
       .then(saveAndRedirect)
       .catch((err) => {
         console.log({err})

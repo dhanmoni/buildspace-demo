@@ -12,6 +12,9 @@ exports.userAuth = async (req, res) => {
     console.log({signature, publicKey});
 
     return (
+        ////////////////////////////////////////////////////
+        // Step 1: Find User by Public Key
+        ////////////////////////////////////////////////////
         User.findOne({ publicKey })
         .then((user) => {
             if (!user) {
