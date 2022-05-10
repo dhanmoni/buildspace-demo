@@ -1,0 +1,102 @@
+#auth-page{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+#left-panel, #auth-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 40px;
+}
+#left-panel {
+    width: 40%;
+    height:100vh;
+    font-size: 48px;
+    color: white;
+    text-align: start;
+    font-weight: 600;
+    letter-spacing: -.05em;
+    background: rgb(25,9,55);
+    background: linear-gradient(147deg, rgba(25,9,55,1) 0%, rgba(150,18,133,1) 57%, rgba(225,84,90,1) 100%);
+}
+#left-panel p{
+    width:60%
+}
+#left-panel span{
+    font-family:  'EB Garamond', serif;
+    font-weight: 600;
+    font-style: italic;
+}
+#auth-form{
+    width:60%;
+    align-items: center;
+}
+
+#auth-form p {
+    color: #000;
+    text-align: center;
+    font-weight: 600;
+    font-size: 32px;
+}
+
+
+#auth-form input {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#email-btn, #metamask-btn{
+    color: white;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 8px;
+    display: inline-block;
+    box-sizing: border-box;
+    width:60%;
+    text-align: center;
+}
+#email-btn:hover, #metamask-btn:hover{
+    cursor: pointer;
+}
+
+#email-btn::after, #metamask-btn::after{
+    content: '\f30b';
+    font-family: "Font Awesome 5 Free";
+    margin:0px 6px;
+    color:white;
+    font-weight: 900;
+}
+
+
+#email-btn::before{
+    content: '\f0e0';
+    font-family: "Font Awesome 5 Free";
+    margin:0px 6px;
+    color:white;
+    font-weight: 900;
+}
+
+#metamask-btn::before{
+    content: '\f555';
+    font-family: "Font Awesome 5 Free";
+    margin:0px 6px;
+    color:white;
+    font-weight: 900;
+}
+
+#email-btn{
+    background-color: #000;
+}
+#metamask-btn {
+    background-color: #F6851B;
+}

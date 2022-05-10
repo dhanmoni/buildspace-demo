@@ -4,8 +4,6 @@ const schema = new mongoose.Schema(
   {
     publicKey:{
         type: String,
-        required: true,
-        unique: true,
     },
     nonce: {
         type: Number,

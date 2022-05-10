@@ -7,7 +7,6 @@ function Landing() {
   return (
     <div id="landing">
       <div id="landing-container">
-
         <Navbar/>
         <HeroSection/>
       </div>
