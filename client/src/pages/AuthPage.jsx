@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import '../styles/AuthPage.css'
 import {provider, signer} from '../util/metamask'
 import { useNavigate } from 'react-router-dom';
-
+import api from '../util/api'
 
 const {ethereum} = window
 
@@ -12,27 +12,30 @@ function AuthPage() {
 
   const handleAuthenticate = async ({publicKey,signature}) =>{
     console.log('authenticating..', publicKey)
-		const res = await fetch(`http://localhost:5000/api/auth/`, {
-			body: JSON.stringify({ publicKey, signature }),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-		})
-
-    return res.json()
+		// const res = await fetch(`/api/auth/`, {
+		// 	body: JSON.stringify({ publicKey, signature }),
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	method: 'POST',
+		// })
+    const res = await api.post('/auth/', {publicKey, signature})
+    console.log({res})
+    return res;
   }
 
   const handleSignup = async (publicKey) =>{
     console.log('signing up..', publicKey)
-		const res = await fetch(`http://localhost:5000/api/auth/register`, {
-			body: JSON.stringify({ publicKey }),
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			method: 'POST',
-		})
-    return res.json();
+		// const res = await fetch(`/api/auth/register`, {
+		// 	body: JSON.stringify({ publicKey }),
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// 	method: 'POST',
+		// })
+    const res = await api.post('/auth/register', {publicKey})
+    console.log({res})
+    return res;
 }
   
   const handleSignMessage = async ({publicKey,nonce}) => {
@@ -48,8 +51,7 @@ function AuthPage() {
 		}
 	};
 
-  const saveAndRedirect = (data)=> {
-    console.log({data})
+  const saveAndRedirect = ({data})=> {
     localStorage.setItem("auth-token", data.token)
     navigate('/home')
   }
@@ -63,16 +65,17 @@ function AuthPage() {
     if(!accounts.length){
       return alert('No account found!')
     } 
-    
-    fetch(`http://localhost:5000/api/auth/get-user/${accounts[0]}`)
-      .then((response) => response.json())
-      // //If user exists, retrieve it. If no, then signup and create user.
+    console.log("fetching...")
+    api.get(`/auth/get-user/${accounts[0]}`)
+    // .then(data=> console.log(data))
+      .then((response) => response.data)
+      //If user exists, retrieve it. If no, then signup and create user.
       .then((user) => user ? user : handleSignup(accounts[0]))
-      // Popup MetaMask confirmation modal to sign message
+      // // Popup MetaMask confirmation modal to sign message
       .then(handleSignMessage)
-      // // Send signature to backend on the /auth route
+      // // // Send signature to backend on the /auth route
       .then(handleAuthenticate)
-      // //  save jwt token in localStorage
+      // // //  save jwt token in localStorage
       .then(saveAndRedirect)
       .catch((err) => {
         console.log({err})
