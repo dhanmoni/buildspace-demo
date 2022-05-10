@@ -1,0 +1,57 @@
+#navbar{
+    min-height: 70px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+#logo {
+    font-weight: 500;
+    font-size: 20px;
+    color: white
+}
+
+#nav-links a {
+    padding: 6px 24px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: all 0.2s;
+}
+
+#nav-links a:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+#nav-btn {
+    display: flex;
+    padding: 8px 24px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color:white
+}
+
+#nav-btn::after{
+    content: '\f30b';
+    font-family: "Font Awesome 5 Free";
+    font-weight: normal;
+    font-style: normal;
+    margin:0px 0px 0px 6px;
+    text-decoration:none;
+    color:white;
+    font-weight: 900;
+}
+
+#nav-btn:hover{
+    border: 1px solid white;
+}
