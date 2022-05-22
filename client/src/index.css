@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@1,600&family=Inter:wght@400;500;600&display=swap');
+@import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
