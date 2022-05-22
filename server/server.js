@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 require('dotenv').config();
 const router = require('./router')
+const path = require('path')
 
 const app = express()
 
@@ -20,6 +21,15 @@ mongoose.connect(process.env.MONGODB_ATLAS_URI,
         console.log('connected to MongoDB')
     }
 );
+// For production
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.resolve(__dirname, "./client/build")));
+
+  app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  });
+}
+
 
 // port
 const port = process.env.PORT || 5000;
