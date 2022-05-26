@@ -21,9 +21,10 @@ function App() {
             exact
             path="/home"
             element={
-            <PrivateRoute>
               <Home/>
-            </PrivateRoute>
+            // <PrivateRoute>
+            //   <Home/>
+            // </PrivateRoute>
             }
           />
         </Routes>

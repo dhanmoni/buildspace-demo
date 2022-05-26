@@ -9,12 +9,6 @@ const {ethereum} = window
 function AuthPage() {
 
   const navigate = useNavigate()
-  useEffect(async()=> {
-    const res = await api.get('/get')
-    console.log({res})
-    const res2 = await api.post('/post')
-    console.log({res2})
-  }, [])
 
   const handleAuthenticate = async ({publicKey,signature}) =>{
     console.log('authenticating..', publicKey)
