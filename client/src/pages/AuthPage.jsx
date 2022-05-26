@@ -60,7 +60,9 @@ function AuthPage() {
     console.log("fetching...")
     api.get(`/api/auth/get-user/${accounts[0]}`)
     // .then(data=> console.log(data))
-      .then((response) => response.data)
+      .then((response) =>{
+        console.log(response.data);
+      return response.data})
       //If user exists, retrieve it. If no, then signup and create user.
       .then((user) => user ? user : handleSignup(accounts[0]))
       // // Popup MetaMask confirmation modal to sign message
