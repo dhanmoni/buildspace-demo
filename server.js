@@ -19,8 +19,9 @@ mongoose.connect(process.env.MONGODB_ATLAS_URI,
     err => {
         if(err) throw err;
         console.log('connected to MongoDB')
-    }
-);
+      }
+      );
+app.use(router);
 // For production
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.resolve(__dirname, "./client/dist")));
@@ -41,7 +42,6 @@ if(process.env.NODE_ENV === 'production'){
 // port
 const port = process.env.PORT || 8080;
 
-app.use(router);
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
