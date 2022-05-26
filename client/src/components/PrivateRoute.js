@@ -11,15 +11,9 @@ function PrivateRoute({ children }) {
             console.log('returning...');
             navigate('/');
         }
-    }, [])
+    }, []);
     
-    console.log({jwt_token})
-    if (!jwt_token) {
-        return null;
-    } else {
-        console.log('not returning...');
-        return children
-    }
+    return children;
 }
 
 export default PrivateRoute
