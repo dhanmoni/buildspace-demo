@@ -12,7 +12,7 @@ function AuthPage() {
 
   const handleAuthenticate = async ({publicKey,signature}) =>{
     console.log('authenticating..', publicKey)
-    const res = await api.post('/api/auth/', {publicKey, signature})
+    const res = await api.post('/api/auth/', {publicKey, signature});
     console.log({res})
     return res;
   }
@@ -27,6 +27,7 @@ function AuthPage() {
   const handleSignMessage = async (data) => {
     console.log({data})
     const {publicKey, nonce} = data
+
     console.log('signing msg..', publicKey, nonce)
 		try {
 			const signature = await signer.signMessage(`I am signing my one-time nonce: ${nonce}`);
@@ -59,6 +60,7 @@ function AuthPage() {
       .then((response) =>{
         console.log(response.data);
       return response.data})
+
       //If user exists, retrieve it. If no, then signup and create user.
       .then((user) => user ? user : handleSignup(accounts[0]))
       // // Popup MetaMask confirmation modal to sign message

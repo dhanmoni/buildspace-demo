@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import {  useNavigate } from "react-router-dom";
 
 function PrivateRoute({ children }) {
-    
+ 
     const navigate = useNavigate();
     const jwt_token = localStorage.getItem('auth-token');
     useEffect(()=> {
