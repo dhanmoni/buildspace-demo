@@ -32,7 +32,7 @@ if(process.env.NODE_ENV === 'production'){
 
 
 // port
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 
 app.use(router);
 

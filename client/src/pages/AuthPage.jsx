@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../styles/AuthPage.css'
 import {provider, signer} from '../util/metamask'
 import { useNavigate } from 'react-router-dom';
@@ -12,28 +12,14 @@ function AuthPage() {
 
   const handleAuthenticate = async ({publicKey,signature}) =>{
     console.log('authenticating..', publicKey)
-		// const res = await fetch(`/api/auth/`, {
-		// 	body: JSON.stringify({ publicKey, signature }),
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// 	method: 'POST',
-		// })
-    const res = await api.post('/auth/', {publicKey, signature})
+    const res = await api.post('/api/auth/', {publicKey, signature})
     console.log({res})
     return res;
   }
 
   const handleSignup = async (publicKey) =>{
     console.log('signing up..', publicKey)
-		// const res = await fetch(`/api/auth/register`, {
-		// 	body: JSON.stringify({ publicKey }),
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 	},
-		// 	method: 'POST',
-		// })
-    const res = await api.post('/auth/register', {publicKey})
+    const res = await api.post('/api/auth/register', {publicKey})
     console.log({res})
     return res;
 }
@@ -66,7 +52,7 @@ function AuthPage() {
       return alert('No account found!')
     } 
     console.log("fetching...")
-    api.get(`/auth/get-user/${accounts[0]}`)
+    api.get(`/api/auth/get-user/${accounts[0]}`)
     // .then(data=> console.log(data))
       .then((response) => response.data)
       //If user exists, retrieve it. If no, then signup and create user.
