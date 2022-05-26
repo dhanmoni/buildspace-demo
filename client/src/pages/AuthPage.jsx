@@ -20,14 +20,14 @@ function AuthPage() {
     console.log('authenticating..', publicKey)
     const res = await api.post('/api/auth/', {publicKey, signature})
     console.log({res})
-    return res.json();
+    return res;
   }
 
   const handleSignup = async (publicKey) =>{
     console.log('signing up..', publicKey)
     const res = await api.post('/api/auth/register', {publicKey})
-    console.log({res: res.json()})
-    return res.json();
+    console.log({res})
+    return res;
 }
   
   const handleSignMessage = async (data) => {
