@@ -21,12 +21,12 @@ function AuthPage() {
     console.log('signing up..', publicKey)
     const res = await api.post('/api/auth/register', {publicKey})
     console.log({res})
-    return res;
+    return res.data;
 }
   
   const handleSignMessage = async (data) => {
     console.log({data})
-    const {publicKey, nonce} = data.data
+    const {publicKey, nonce} = data
     console.log('signing msg..', publicKey, nonce)
 		try {
 			const signature = await signer.signMessage(`I am signing my one-time nonce: ${nonce}`);
