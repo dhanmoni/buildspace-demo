@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/AuthPage.css'
 import {provider, signer} from '../util/metamask'
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,12 @@ const {ethereum} = window
 function AuthPage() {
 
   const navigate = useNavigate()
+  useEffect(async()=> {
+    const res = await api.get('/get')
+    console.log({res})
+    const res2 = await api.post('/post')
+    console.log({res2})
+  }, [])
 
   const handleAuthenticate = async ({publicKey,signature}) =>{
     console.log('authenticating..', publicKey)
