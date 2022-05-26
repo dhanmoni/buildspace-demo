@@ -20,17 +20,19 @@ function AuthPage() {
     console.log('authenticating..', publicKey)
     const res = await api.post('/api/auth/', {publicKey, signature})
     console.log({res})
-    return res;
+    return res.json();
   }
 
   const handleSignup = async (publicKey) =>{
     console.log('signing up..', publicKey)
     const res = await api.post('/api/auth/register', {publicKey})
-    console.log({res})
-    return res;
+    console.log({res: res.json()})
+    return res.json();
 }
   
-  const handleSignMessage = async ({publicKey,nonce}) => {
+  const handleSignMessage = async (data) => {
+    console.log({data})
+    const {publicKey, nonce} = data
     console.log('signing msg..', publicKey, nonce)
 		try {
 			const signature = await signer.signMessage(`I am signing my one-time nonce: ${nonce}`);
