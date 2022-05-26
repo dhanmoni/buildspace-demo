@@ -28,7 +28,7 @@ if(process.env.NODE_ENV === 'production'){
   app.get('/get', (req, res)=> {
     return res.status(200).json({msg: "hello world"})
   })
-  app.post('/post', ()=> {
+  app.post('/post', (req, res)=> {
     return res.status(200).json({msg: "msg posted"})
   })
   app.get("*", function (request, response) {
