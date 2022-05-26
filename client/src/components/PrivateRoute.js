@@ -4,11 +4,11 @@ import {  useNavigate } from "react-router-dom";
 
 function PrivateRoute({ children }) {
     
-    const navigate = useNavigate()
-    const jwt_token = localStorage.getItem('auth-token')
+    const navigate = useNavigate();
+    const jwt_token = localStorage.getItem('auth-token');
     useEffect(()=> {
         if (!jwt_token) {
-            console.log('returning...')
+            console.log('returning...');
             navigate('/');
         }
     }, [])
@@ -17,7 +17,7 @@ function PrivateRoute({ children }) {
     if (!jwt_token) {
         return null;
     } else {
-        console.log('not returning...')
+        console.log('not returning...');
         return children
     }
 }
