@@ -21,26 +21,18 @@ mongoose.connect(process.env.MONGODB_ATLAS_URI,
         console.log('connected to MongoDB')
       }
       );
+
+// port
+const port = process.env.PORT || 8080;
 app.use(router);
 // For production
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static(path.resolve(__dirname, "./client/dist")));
 
-  app.get('/get', (req, res)=> {
-    return res.status(200).json({msg: "hello world"})
-  })
-  app.post('/post', (req, res)=> {
-    return res.status(200).json({msg: "msg posted"})
-  })
   app.get("*", function (request, response) {
     response.sendFile(path.resolve(__dirname, "./client/dist", "index.html"));
   });
 }
-
-
-
-// port
-const port = process.env.PORT || 8080;
 
 
 app.listen(port, () => {
