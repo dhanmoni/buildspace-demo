@@ -55,3 +55,9 @@
 #nav-btn:hover{
     border: 1px solid white;
 }
+
+@media only screen and (max-width: 600px) {
+   #nav-links{
+       display: none;
+   }
+}
